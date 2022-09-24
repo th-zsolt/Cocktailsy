@@ -7,23 +7,75 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D9AB68528E2AD00005E0CBA /* CocktailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9AB68428E2AD00005E0CBA /* CocktailCell.swift */; };
+		0DA2F90F28E169480032FBD0 /* CoctailByCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2F90E28E169480032FBD0 /* CoctailByCategory.swift */; };
+		0DA2F91128E18D7D0032FBD0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2F91028E18D7D0032FBD0 /* PersistenceManager.swift */; };
+		0DA2F91328E19A370032FBD0 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2F91228E19A370032FBD0 /* FavoriteCell.swift */; };
 		0DB11F5428DF629A00B51F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F5328DF629A00B51F33 /* AppDelegate.swift */; };
 		0DB11F5628DF629A00B51F33 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F5528DF629A00B51F33 /* SceneDelegate.swift */; };
-		0DB11F5828DF629A00B51F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F5728DF629A00B51F33 /* ViewController.swift */; };
-		0DB11F5B28DF629A00B51F33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB11F5928DF629A00B51F33 /* Main.storyboard */; };
 		0DB11F5D28DF629B00B51F33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DB11F5C28DF629B00B51F33 /* Assets.xcassets */; };
 		0DB11F6028DF629B00B51F33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB11F5E28DF629B00B51F33 /* LaunchScreen.storyboard */; };
+		0DB11F6A28DF63F400B51F33 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F6928DF63F400B51F33 /* UIView+Ext.swift */; };
+		0DB11F6C28DF640F00B51F33 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F6B28DF640F00B51F33 /* UITableView+Ext.swift */; };
+		0DB11F6E28DF642C00B51F33 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F6D28DF642C00B51F33 /* UIViewController+Ext.swift */; };
+		0DB11F7128DF645900B51F33 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F7028DF645900B51F33 /* Constants.swift */; };
+		0DB11F7328DF647900B51F33 /* CYError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F7228DF647900B51F33 /* CYError.swift */; };
+		0DB11F7628DF64CA00B51F33 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F7528DF64CA00B51F33 /* NetworkManager.swift */; };
+		0DB11F7A28DF650700B51F33 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F7928DF650700B51F33 /* Category.swift */; };
+		0DB11F7C28DF652E00B51F33 /* Cocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F7B28DF652E00B51F33 /* Cocktail.swift */; };
+		0DB11F8128DF65C000B51F33 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F8028DF65C000B51F33 /* SearchVC.swift */; };
+		0DB11F8328DF65DC00B51F33 /* CategoriesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F8228DF65DC00B51F33 /* CategoriesListVC.swift */; };
+		0DB11F8528DF660100B51F33 /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F8428DF660100B51F33 /* FavoritesListVC.swift */; };
+		0DB11F8728DF661E00B51F33 /* CocktailsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F8628DF661E00B51F33 /* CocktailsListVC.swift */; };
+		0DB11F8928DF664B00B51F33 /* CYEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F8828DF664B00B51F33 /* CYEmptyStateView.swift */; };
+		0DB11F8B28DF666000B51F33 /* CYAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F8A28DF666000B51F33 /* CYAlertContainerView.swift */; };
+		0DB11F8E28DF668B00B51F33 /* CYAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F8D28DF668B00B51F33 /* CYAlertVC.swift */; };
+		0DB11F9028DF66B100B51F33 /* CYDataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F8F28DF66B100B51F33 /* CYDataLoadingVC.swift */; };
+		0DB11F9328DF66E100B51F33 /* CYImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F9228DF66E100B51F33 /* CYImageView.swift */; };
+		0DB11F9628DF671200B51F33 /* CYTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F9528DF671200B51F33 /* CYTextField.swift */; };
+		0DB11F9B28DF674600B51F33 /* CYButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F9A28DF674600B51F33 /* CYButton.swift */; };
+		0DB11F9D28DF677B00B51F33 /* CYTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F9C28DF677B00B51F33 /* CYTabBarController.swift */; };
+		0DB11F9F28DF67A400B51F33 /* CYSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11F9E28DF67A400B51F33 /* CYSecondaryTitleLabel.swift */; };
+		0DB11FA128DF67EF00B51F33 /* CYBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11FA028DF67EF00B51F33 /* CYBodyLabel.swift */; };
+		0DB11FA328DF680000B51F33 /* CYTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11FA228DF680000B51F33 /* CYTitleLabel.swift */; };
+		0DCDECA128E36EEF00DC0BD3 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDECA028E36EEF00DC0BD3 /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D9AB68428E2AD00005E0CBA /* CocktailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCell.swift; sourceTree = "<group>"; };
+		0DA2F90E28E169480032FBD0 /* CoctailByCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailByCategory.swift; sourceTree = "<group>"; };
+		0DA2F91028E18D7D0032FBD0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		0DA2F91228E19A370032FBD0 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		0DB11F5028DF629A00B51F33 /* Cocktailsy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktailsy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DB11F5328DF629A00B51F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DB11F5528DF629A00B51F33 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0DB11F5728DF629A00B51F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0DB11F5A28DF629A00B51F33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0DB11F5C28DF629B00B51F33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DB11F5F28DF629B00B51F33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DB11F6128DF629B00B51F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DB11F6928DF63F400B51F33 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		0DB11F6B28DF640F00B51F33 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
+		0DB11F6D28DF642C00B51F33 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		0DB11F7028DF645900B51F33 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0DB11F7228DF647900B51F33 /* CYError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYError.swift; sourceTree = "<group>"; };
+		0DB11F7528DF64CA00B51F33 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0DB11F7928DF650700B51F33 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0DB11F7B28DF652E00B51F33 /* Cocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cocktail.swift; sourceTree = "<group>"; };
+		0DB11F8028DF65C000B51F33 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		0DB11F8228DF65DC00B51F33 /* CategoriesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListVC.swift; sourceTree = "<group>"; };
+		0DB11F8428DF660100B51F33 /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
+		0DB11F8628DF661E00B51F33 /* CocktailsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListVC.swift; sourceTree = "<group>"; };
+		0DB11F8828DF664B00B51F33 /* CYEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYEmptyStateView.swift; sourceTree = "<group>"; };
+		0DB11F8A28DF666000B51F33 /* CYAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYAlertContainerView.swift; sourceTree = "<group>"; };
+		0DB11F8D28DF668B00B51F33 /* CYAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYAlertVC.swift; sourceTree = "<group>"; };
+		0DB11F8F28DF66B100B51F33 /* CYDataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYDataLoadingVC.swift; sourceTree = "<group>"; };
+		0DB11F9228DF66E100B51F33 /* CYImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYImageView.swift; sourceTree = "<group>"; };
+		0DB11F9528DF671200B51F33 /* CYTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYTextField.swift; sourceTree = "<group>"; };
+		0DB11F9A28DF674600B51F33 /* CYButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYButton.swift; sourceTree = "<group>"; };
+		0DB11F9C28DF677B00B51F33 /* CYTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYTabBarController.swift; sourceTree = "<group>"; };
+		0DB11F9E28DF67A400B51F33 /* CYSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYSecondaryTitleLabel.swift; sourceTree = "<group>"; };
+		0DB11FA028DF67EF00B51F33 /* CYBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYBodyLabel.swift; sourceTree = "<group>"; };
+		0DB11FA228DF680000B51F33 /* CYTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYTitleLabel.swift; sourceTree = "<group>"; };
+		0DCDECA028E36EEF00DC0BD3 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +89,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D9AB68128E2AAFF005E0CBA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0DA2F91228E19A370032FBD0 /* FavoriteCell.swift */,
+				0D9AB68428E2AD00005E0CBA /* CocktailCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		0DB11F4728DF629A00B51F33 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +117,152 @@
 		0DB11F5228DF629A00B51F33 /* Cocktailsy */ = {
 			isa = PBXGroup;
 			children = (
-				0DB11F5328DF629A00B51F33 /* AppDelegate.swift */,
-				0DB11F5528DF629A00B51F33 /* SceneDelegate.swift */,
-				0DB11F5728DF629A00B51F33 /* ViewController.swift */,
-				0DB11F5928DF629A00B51F33 /* Main.storyboard */,
-				0DB11F5C28DF629B00B51F33 /* Assets.xcassets */,
-				0DB11F5E28DF629B00B51F33 /* LaunchScreen.storyboard */,
+				0DB11F6728DF634000B51F33 /* Support */,
+				0DB11F6828DF63CF00B51F33 /* Extension */,
+				0DB11F6F28DF644000B51F33 /* Utilities */,
+				0DB11F7428DF64A200B51F33 /* Manager */,
+				0DB11F7828DF64F000B51F33 /* Model */,
+				0DB11F7E28DF656300B51F33 /* Custom Views */,
+				0DB11F7F28DF657D00B51F33 /* Screens */,
 				0DB11F6128DF629B00B51F33 /* Info.plist */,
 			);
 			path = Cocktailsy;
+			sourceTree = "<group>";
+		};
+		0DB11F6728DF634000B51F33 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F5328DF629A00B51F33 /* AppDelegate.swift */,
+				0DB11F5528DF629A00B51F33 /* SceneDelegate.swift */,
+				0DB11F5C28DF629B00B51F33 /* Assets.xcassets */,
+				0DB11F5E28DF629B00B51F33 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		0DB11F6828DF63CF00B51F33 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F6928DF63F400B51F33 /* UIView+Ext.swift */,
+				0DB11F6B28DF640F00B51F33 /* UITableView+Ext.swift */,
+				0DB11F6D28DF642C00B51F33 /* UIViewController+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0DB11F6F28DF644000B51F33 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F7028DF645900B51F33 /* Constants.swift */,
+				0DB11F7228DF647900B51F33 /* CYError.swift */,
+				0DCDECA028E36EEF00DC0BD3 /* UIHelper.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0DB11F7428DF64A200B51F33 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F7528DF64CA00B51F33 /* NetworkManager.swift */,
+				0DA2F91028E18D7D0032FBD0 /* PersistenceManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		0DB11F7828DF64F000B51F33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F7928DF650700B51F33 /* Category.swift */,
+				0DB11F7B28DF652E00B51F33 /* Cocktail.swift */,
+				0DA2F90E28E169480032FBD0 /* CoctailByCategory.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0DB11F7D28DF655700B51F33 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F8828DF664B00B51F33 /* CYEmptyStateView.swift */,
+				0DB11F8A28DF666000B51F33 /* CYAlertContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DB11F7E28DF656300B51F33 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F9928DF672F00B51F33 /* TabBarControllers */,
+				0DB11F9828DF672800B51F33 /* Labels */,
+				0DB11F9728DF672000B51F33 /* Buttons */,
+				0DB11F9428DF66FA00B51F33 /* TextFields */,
+				0DB11F9128DF66C400B51F33 /* ImageViews */,
+				0DB11F8C28DF667400B51F33 /* ViewControllers */,
+				0DB11F7D28DF655700B51F33 /* Views */,
+				0D9AB68128E2AAFF005E0CBA /* Cells */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		0DB11F7F28DF657D00B51F33 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F8028DF65C000B51F33 /* SearchVC.swift */,
+				0DB11F8228DF65DC00B51F33 /* CategoriesListVC.swift */,
+				0DB11F8428DF660100B51F33 /* FavoritesListVC.swift */,
+				0DB11F8628DF661E00B51F33 /* CocktailsListVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		0DB11F8C28DF667400B51F33 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F8D28DF668B00B51F33 /* CYAlertVC.swift */,
+				0DB11F8F28DF66B100B51F33 /* CYDataLoadingVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0DB11F9128DF66C400B51F33 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F9228DF66E100B51F33 /* CYImageView.swift */,
+			);
+			path = ImageViews;
+			sourceTree = "<group>";
+		};
+		0DB11F9428DF66FA00B51F33 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F9528DF671200B51F33 /* CYTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		0DB11F9728DF672000B51F33 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F9A28DF674600B51F33 /* CYButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		0DB11F9828DF672800B51F33 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F9E28DF67A400B51F33 /* CYSecondaryTitleLabel.swift */,
+				0DB11FA028DF67EF00B51F33 /* CYBodyLabel.swift */,
+				0DB11FA228DF680000B51F33 /* CYTitleLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		0DB11F9928DF672F00B51F33 /* TabBarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0DB11F9C28DF677B00B51F33 /* CYTabBarController.swift */,
+			);
+			path = TabBarControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +325,6 @@
 			files = (
 				0DB11F6028DF629B00B51F33 /* LaunchScreen.storyboard in Resources */,
 				0DB11F5D28DF629B00B51F33 /* Assets.xcassets in Resources */,
-				0DB11F5B28DF629A00B51F33 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +335,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DB11F5828DF629A00B51F33 /* ViewController.swift in Sources */,
+				0DA2F90F28E169480032FBD0 /* CoctailByCategory.swift in Sources */,
+				0DB11F8528DF660100B51F33 /* FavoritesListVC.swift in Sources */,
+				0DB11F8328DF65DC00B51F33 /* CategoriesListVC.swift in Sources */,
+				0DB11F7328DF647900B51F33 /* CYError.swift in Sources */,
+				0DB11F8128DF65C000B51F33 /* SearchVC.swift in Sources */,
+				0DB11F8928DF664B00B51F33 /* CYEmptyStateView.swift in Sources */,
+				0DB11FA328DF680000B51F33 /* CYTitleLabel.swift in Sources */,
+				0D9AB68528E2AD00005E0CBA /* CocktailCell.swift in Sources */,
+				0DB11F9328DF66E100B51F33 /* CYImageView.swift in Sources */,
+				0DB11FA128DF67EF00B51F33 /* CYBodyLabel.swift in Sources */,
+				0DA2F91328E19A370032FBD0 /* FavoriteCell.swift in Sources */,
 				0DB11F5428DF629A00B51F33 /* AppDelegate.swift in Sources */,
+				0DB11F6C28DF640F00B51F33 /* UITableView+Ext.swift in Sources */,
+				0DB11F8B28DF666000B51F33 /* CYAlertContainerView.swift in Sources */,
+				0DB11F8728DF661E00B51F33 /* CocktailsListVC.swift in Sources */,
+				0DB11F7C28DF652E00B51F33 /* Cocktail.swift in Sources */,
+				0DB11F6E28DF642C00B51F33 /* UIViewController+Ext.swift in Sources */,
+				0DA2F91128E18D7D0032FBD0 /* PersistenceManager.swift in Sources */,
+				0DB11F8E28DF668B00B51F33 /* CYAlertVC.swift in Sources */,
+				0DB11F7628DF64CA00B51F33 /* NetworkManager.swift in Sources */,
+				0DB11F9028DF66B100B51F33 /* CYDataLoadingVC.swift in Sources */,
+				0DB11F9F28DF67A400B51F33 /* CYSecondaryTitleLabel.swift in Sources */,
+				0DB11F7A28DF650700B51F33 /* Category.swift in Sources */,
+				0DCDECA128E36EEF00DC0BD3 /* UIHelper.swift in Sources */,
 				0DB11F5628DF629A00B51F33 /* SceneDelegate.swift in Sources */,
+				0DB11F9D28DF677B00B51F33 /* CYTabBarController.swift in Sources */,
+				0DB11F9628DF671200B51F33 /* CYTextField.swift in Sources */,
+				0DB11F6A28DF63F400B51F33 /* UIView+Ext.swift in Sources */,
+				0DB11F7128DF645900B51F33 /* Constants.swift in Sources */,
+				0DB11F9B28DF674600B51F33 /* CYButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0DB11F5928DF629A00B51F33 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0DB11F5A28DF629A00B51F33 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0DB11F5E28DF629B00B51F33 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,9 +508,8 @@
 				INFOPLIST_FILE = Cocktailsy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +517,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "th-zsolt.Cocktailsy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,9 +538,8 @@
 				INFOPLIST_FILE = Cocktailsy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +547,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "th-zsolt.Cocktailsy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
