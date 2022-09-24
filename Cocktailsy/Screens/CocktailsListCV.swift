@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CocktailsListCV.swift
 //  Cocktailsy
 //
 //  Created by Zsolt Toth on 2022. 09. 24..
@@ -7,13 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CocktailsListCV: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
 }
-
