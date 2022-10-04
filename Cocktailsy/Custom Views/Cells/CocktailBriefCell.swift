@@ -1,15 +1,15 @@
 //
-//  CocktailCell.swift
+//  CocktailBriefCell.swift
 //  Cocktailsy
 //
-//  Created by Zsolt Toth on 2022. 09. 27..
+//  Created by Zsolt Toth on 2022. 10. 02..
 //
 
 import UIKit
 
-class CocktailCell: UICollectionViewCell {
+class CocktailBriefCell: UICollectionViewCell {
 
-    static let reuseID = "CocktailCell"
+    static let reuseID = "CocktailBriefCell"
     let avatarImageView = CYImageView(frame: .zero)
     let cocktailNameLabel = CYTitleLabel(textAlignment: .center, fontSize: 16)
     
@@ -25,9 +25,9 @@ class CocktailCell: UICollectionViewCell {
     }
     
     
-    func set(cocktail: Cocktail) {
-        avatarImageView.downloadImage(fromURl: cocktail.avatarUrl)
-        cocktailNameLabel.text = cocktail.drinkName
+    func set(cocktailBrief: CocktailBrief) {
+        avatarImageView.downloadImage(fromURl: cocktailBrief.avatarUrl)
+        cocktailNameLabel.text = cocktailBrief.drinkName
         }
     
     

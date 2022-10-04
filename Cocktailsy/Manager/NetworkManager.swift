@@ -42,7 +42,7 @@ class NetworkManager {
     }
     
     
-    func getCocktailsByName(for cocktailName: String, page: Int) async throws -> [Cocktail] {
+    func getCocktailsByName(for cocktailName: String) async throws -> [CocktailBrief] {
         let endpoint = baseURL + "search.php?s=\(cocktailName)"
         
         guard let url = URL(string: endpoint) else {
@@ -56,8 +56,8 @@ class NetworkManager {
         }
             
         do {
-            let cocktailResult = try decoder.decode(CocktailResults.self, from: data)
-            let cocktails = cocktailResult.drinks
+            let cocktailBriefResults = try decoder.decode(CocktailBriefResults.self, from: data)
+            let cocktails = cocktailBriefResults.drinks
             print(cocktails)
             return cocktails
             
@@ -67,7 +67,34 @@ class NetworkManager {
     }
     
     
-    func getCocktailsById(for cocktailId: String, page: Int) async throws -> [Cocktail] {
+    func getCocktailsByCategoryName(for categoryName: String) async throws -> [CocktailBrief] {
+        let newCategoryName = categoryName.replacingOccurrences(of: " ", with: "_")
+        let endpoint = baseURL + "filter.php?c=\(newCategoryName)"
+        print(endpoint)
+        
+        guard let url = URL(string: endpoint) else {
+            throw CYError.invalidCoctailName
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+                  
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw CYError.invalidResponse
+        }
+            
+        do {
+            let cocktailBriefResults = try decoder.decode(CocktailBriefResults.self, from: data)
+            let cocktails = cocktailBriefResults.drinks
+            print(cocktails)
+            return cocktails
+            
+        } catch {
+            throw CYError.invalidData
+        }
+    }
+    
+    
+    func getCocktailById(for cocktailId: String) async throws -> [Cocktail] {
         let endpoint = baseURL + "lookup.php?i=\(cocktailId)"
         
         guard let url = URL(string: endpoint) else {

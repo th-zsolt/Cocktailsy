@@ -25,7 +25,7 @@ class FavoriteCell: UITableViewCell {
     }
 
 
-    func set(favorite: Cocktail) {
+    func set(favorite: CocktailBrief) {
         avatarImageView.downloadImage(fromURl: favorite.avatarUrl)
         cocktailNameLabel.text = favorite.drinkName
     }

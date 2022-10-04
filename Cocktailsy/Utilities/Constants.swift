@@ -7,6 +7,12 @@
 
 import UIKit
 
+
+enum SFSymbols {
+    static let alcoholic = UIImage(systemName: "a.square.fill")
+}
+
+
 enum Images {
     static let placeHolder = UIImage(named: "placeholder")
     static let emptyStateLogo = UIImage(named: "empty-state")

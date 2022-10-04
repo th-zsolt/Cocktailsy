@@ -11,29 +11,29 @@ class CocktailsListVC: CYDataLoadingVC {
     
     enum Section { case main}
     
-    var category: String?
+    var categoryName: String?
     var cocktailName: String?
-    var cocktails: [Cocktail] = []
-    var filteredCocktails: [Cocktail] = []
+    var cocktailBriefs: [CocktailBrief] = []
+    var filteredCocktailBriefs: [CocktailBrief] = []
     var isSearching = false
     
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Cocktail>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, CocktailBrief>!
 
     
     init(cocktailName: String) {
         super.init(nibName: nil, bundle: nil)
         self.cocktailName = cocktailName
-        self.category = nil
+        self.categoryName = nil
         title = cocktailName
     }
     
     
-    init(category: String) {
+    init(categoryName: String) {
         super.init(nibName: nil, bundle: nil)
-        self.category = category
+        self.categoryName = categoryName
         self.cocktailName = nil
-        title = category
+        title = categoryName
     }
     
     
@@ -47,7 +47,7 @@ class CocktailsListVC: CYDataLoadingVC {
         configureViewController()
         configureSearchController()
         configureCollectionView()
-        getCocktailsByName(cocktailName: "Margarita", page: 1)
+        categoryName == nil ? getCocktailsByName(cocktailName: cocktailName!) : getCocktailsByCategoryName(categoryName: categoryName!)
         configureDataSource()
     }
     
@@ -61,9 +61,6 @@ class CocktailsListVC: CYDataLoadingVC {
     func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        navigationItem.rightBarButtonItem = addButton
     }
     
     
@@ -81,19 +78,18 @@ class CocktailsListVC: CYDataLoadingVC {
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(CocktailCell.self, forCellWithReuseIdentifier: CocktailCell.reuseID)
+        collectionView.register(CocktailBriefCell.self, forCellWithReuseIdentifier: CocktailBriefCell.reuseID)
     }
     
     
-    func getCocktailsByName(cocktailName: String, page: Int) {
-        //        showLoadingView()
-        //        isLoadingMoreFollowers = true
+    func getCocktailsByName(cocktailName: String) {
+                showLoadingView()
         
         Task {
             do {
-                let cocktails = try await NetworkManager.shared.getCocktailsByName(for: cocktailName, page: page)
-                //                updateUI(with: followers)
-                //                dismissloadingView()
+                let cocktailBriefs = try await NetworkManager.shared.getCocktailsByName(for: cocktailName)
+               updateUI(with: cocktailBriefs)
+               dismissloadingView()
             }  catch {
                 if let cyError = error as? CYError {
                     presentCYAlert(title: "Bad stuff happened", message: cyError.rawValue, buttonTitle: "Ok")
@@ -101,99 +97,78 @@ class CocktailsListVC: CYDataLoadingVC {
                     presentDefaultError()
                 }
                 
-                //                dismissloadingView()
+                dismissloadingView()
             }
         }
     }
     
     
-    func updateUI(with cocktails: [Cocktail]) {
-        self.cocktails.append(contentsOf: cocktails)
+    func getCocktailsByCategoryName(categoryName: String) {
+                showLoadingView()
+        
+        Task {
+            do {
+                let cocktailBriefs = try await NetworkManager.shared.getCocktailsByCategoryName(for: categoryName)
+               updateUI(with: cocktailBriefs)
+               dismissloadingView()
+            }  catch {
+                if let cyError = error as? CYError {
+                    presentCYAlert(title: "Bad stuff happened", message: cyError.rawValue, buttonTitle: "Ok")
+                } else {
+                    presentDefaultError()
+                }
+                
+                dismissloadingView()
+            }
+        }
+    }
     
-        if self.cocktails.isEmpty {
+    
+    func updateUI(with cocktailBriefs: [CocktailBrief]) {
+        self.cocktailBriefs.append(contentsOf: cocktailBriefs)
+    
+        if self.cocktailBriefs.isEmpty {
             let message = "No cocktail found with this name."
             DispatchQueue.main.async {
                 self.showEmptyStateView(with: message, in: self.view)
             }
         }
         
-        self.updateData(on: self.cocktails)
+        self.updateData(on: self.cocktailBriefs)
     }
     
     
     func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Cocktail>(collectionView: collectionView, cellProvider: { (collectionView, IndexPath, cocktail ) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CocktailCell.reuseID, for: IndexPath) as! CocktailCell
-            cell.set(cocktail: cocktail)
+        dataSource = UICollectionViewDiffableDataSource<Section, CocktailBrief>(collectionView: collectionView, cellProvider: { (collectionView, IndexPath, cocktailBrief ) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CocktailBriefCell.reuseID, for: IndexPath) as! CocktailBriefCell
+            cell.set(cocktailBrief: cocktailBrief)
             return cell
         })
     }
     
     
-    func updateData(on cocktails: [Cocktail]){
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Cocktail>()
+    func updateData(on cocktailBriefs: [CocktailBrief]){
+        var snapshot = NSDiffableDataSourceSnapshot<Section, CocktailBrief>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(cocktails)
+        snapshot.appendItems(cocktailBriefs)
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
         }
     }
-
-    
-    @objc func addButtonTapped() {
-        showLoadingView()
-        
-//        Task {
-//            do {
-//                let user = try await NetworkManager.shared.getUserInfo(for: username)
-//                addUserToFavorites(user: user)
-//                dismissloadingView()
-//            } catch {
-//                if let gfError = error as? GFError {
-//                    presentGFAlert(title: "Something went wrong", message:                     gfError.rawValue, buttonTitle: "Ok")
-//                } else {
-//                    presentDefaultError()
-//                }
-//
-//                dismissloadingView()
-//            }
-//        }
-    }
-    
-    
-//    func addCocktailToFavorites(user: User) {
-//        let favorite = Cocktail(id: <#T##String#>, drinkName: <#T##String#>, category: <#T##String#>, alcoholic: <#T##String#>, glass: <#T##String#>, instructions: <#T##String#>, avatarUrl: <#T##String#>, ingredient1: <#T##String?#>, ingredient2: <#T##String?#>, ingredient3: <#T##String?#>, ingredient4: <#T##String?#>, ingredient5: <#T##String?#>, ingredient6: <#T##String?#>, ingredient7: <#T##String?#>, ingredient8: <#T##String?#>, ingredient9: <#T##String?#>, ingredient10: <#T##String?#>, ingredient11: <#T##String?#>, ingredient12: <#T##String?#>, ingredient13: <#T##String?#>, ingredient14: <#T##String?#>, ingredient15: <#T##String?#>, measure1: <#T##String?#>, measure2: <#T##String?#>, measure3: <#T##String?#>, measure4: <#T##String?#>, measure5: <#T##String?#>, measure6: <#T##String?#>, measure7: <#T##String?#>, measure8: <#T##String?#>, measure9: <#T##String?#>, measure10: <#T##String?#>, measure11: <#T##String?#>, measure12: <#T##String?#>, measure13: <#T##String?#>, measure14: <#T##String?#>, measure15: <#T##String?#>)
-//
-//        PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
-//            guard let self = self else { return }
-//
-//            guard let error = error else {
-//                DispatchQueue.main.async {
-//                    self.presentCYAlert(title: "Success!", message: "You have successfully favorited this cocktail.", buttonTitle: "Ok")
-//                }
-//
-//                return
-//            }
-//
-//            DispatchQueue.main.async {
-//                self.presentCYAlert(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
-//            }
-//        }
-//    }
 }
 
 extension CocktailsListVC: UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let activeArray = isSearching ? filteredCocktails : cocktails
-        let follower = activeArray[indexPath.item]
+        let activeArray = isSearching ? filteredCocktailBriefs : cocktailBriefs
+        let cocktailBrief = activeArray[indexPath.item]
         
-//        let destVC = UserInfoVC()
-//        destVC.cocktail =
-//        destVC.delegate = self
-//        let navController = UINavigationController(rootViewController: destVC)
-//        present(navController, animated: true)
+        let destVC = CocktailInfoVC()
+        destVC.cocktailId = cocktailBrief.id
+        destVC.delegate = self
+        let navController = UINavigationController(rootViewController: destVC)
+        present(navController, animated: true)
     }
 }
 
@@ -202,28 +177,27 @@ extension CocktailsListVC: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, !filter.isEmpty else {
-            filteredCocktails.removeAll()
-            updateData(on: cocktails)
+            filteredCocktailBriefs.removeAll()
+            updateData(on: cocktailBriefs)
             isSearching = false
             return }
         
         isSearching = true
-        filteredCocktails = cocktails.filter { $0.drinkName.lowercased().contains(filter.lowercased()) }
-        updateData(on: filteredCocktails)
+        filteredCocktailBriefs = cocktailBriefs.filter { $0.drinkName.lowercased().contains(filter.lowercased()) }
+        updateData(on: filteredCocktailBriefs)
     }
     
 }
 
 
-//extension CocktailsListVC: UserInfoVCDelegate {
-//
-//    func didRequestFollowers(for cocktail: String) {
-//        self.cocktail = cocktail
-//        title = cocktail
-//        page = 1
-//        followers.removeAll()
-//        filteredFollowers.removeAll()
-//        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-//        getCocktailsByName(cocktailName: cocktail, page: 1)
-//    }
-//}
+extension CocktailsListVC: CocktailInfoVCDelegate {
+    
+    func didRequestCocktails(for cocktailName: String) {
+        self.cocktailName = cocktailName
+        title = cocktailName
+        cocktailBriefs.removeAll()
+        filteredCocktailBriefs.removeAll()
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        //
+    }
+}

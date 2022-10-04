@@ -10,8 +10,9 @@ import UIKit
 class FavoritesListVC: CYDataLoadingVC {
     
     let tableView = UITableView()
-    var favorites: [Cocktail] = []
+    var favorites: [CocktailBrief] = []
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -60,7 +61,7 @@ class FavoritesListVC: CYDataLoadingVC {
     }
     
     
-    func updateUI(with favorites: [Cocktail]) {
+    func updateUI(with favorites: [CocktailBrief]) {
         if favorites.isEmpty {
             self.showEmptyStateView(with: "No favorites?\nAdd one on the cocktail screen.", in: self.view)
         } else {

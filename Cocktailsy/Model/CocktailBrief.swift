@@ -1,13 +1,13 @@
 //
-//  CoctailByCategory.swift
+//  CocktailBrief.swift
 //  Cocktailsy
 //
-//  Created by Zsolt Toth on 2022. 09. 26..
+//  Created by Zsolt Toth on 2022. 10. 02..
 //
 
 import Foundation
 
-struct CocktailbyCategory: Codable {
+struct CocktailBrief: Codable, Hashable {
     
     let id: String
     let drinkName: String
@@ -20,6 +20,6 @@ struct CocktailbyCategory: Codable {
     }
 }
 
-struct CocktailbyCategoryResults: Codable {
-    let drinks: [CocktailbyCategory]
+struct CocktailBriefResults: Codable {
+    let drinks: [CocktailBrief]
 }
