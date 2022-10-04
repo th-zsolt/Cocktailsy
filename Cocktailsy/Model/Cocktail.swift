@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Cocktail: Codable, Hashable {
+struct Cocktail: Codable {
     
     let id: String
     let drinkName: String
@@ -47,6 +47,8 @@ struct Cocktail: Codable, Hashable {
     let measure14: String?
     let measure15: String?
     
+    var ingredients = Array(repeating: "", count: 15)
+    var measures = Array(repeating: "", count: 15)
     
     enum CodingKeys: String, CodingKey {
         case id = "idDrink"
@@ -86,6 +88,56 @@ struct Cocktail: Codable, Hashable {
         case measure13 = "strMeasure13"
         case measure14 = "strMeasure14"
         case measure15 = "strMeasure15"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.drinkName = try container.decode(String.self, forKey: .drinkName)
+        self.category = try container.decode(String.self, forKey: .category)
+        self.alcoholic = try container.decode(String.self, forKey: .alcoholic)
+        self.glass = try container.decode(String.self, forKey: .glass)
+        self.instructions = try container.decode(String.self, forKey: .instructions)
+        self.avatarUrl = try container.decode(String.self, forKey: .avatarUrl)
+        self.ingredient1 = try container.decodeIfPresent(String.self, forKey: .ingredient1)
+        self.ingredient2 = try container.decodeIfPresent(String.self, forKey: .ingredient2)
+        self.ingredient3 = try container.decodeIfPresent(String.self, forKey: .ingredient3)
+        self.ingredient4 = try container.decodeIfPresent(String.self, forKey: .ingredient4)
+        self.ingredient5 = try container.decodeIfPresent(String.self, forKey: .ingredient5)
+        self.ingredient6 = try container.decodeIfPresent(String.self, forKey: .ingredient6)
+        self.ingredient7 = try container.decodeIfPresent(String.self, forKey: .ingredient7)
+        self.ingredient8 = try container.decodeIfPresent(String.self, forKey: .ingredient8)
+        self.ingredient9 = try container.decodeIfPresent(String.self, forKey: .ingredient9)
+        self.ingredient10 = try container.decodeIfPresent(String.self, forKey: .ingredient10)
+        self.ingredient11 = try container.decodeIfPresent(String.self, forKey: .ingredient11)
+        self.ingredient12 = try container.decodeIfPresent(String.self, forKey: .ingredient12)
+        self.ingredient13 = try container.decodeIfPresent(String.self, forKey: .ingredient13)
+        self.ingredient14 = try container.decodeIfPresent(String.self, forKey: .ingredient14)
+        self.ingredient15 = try container.decodeIfPresent(String.self, forKey: .ingredient15)
+        self.measure1 = try container.decodeIfPresent(String.self, forKey: .measure1)
+        self.measure2 = try container.decodeIfPresent(String.self, forKey: .measure2)
+        self.measure3 = try container.decodeIfPresent(String.self, forKey: .measure3)
+        self.measure4 = try container.decodeIfPresent(String.self, forKey: .measure4)
+        self.measure5 = try container.decodeIfPresent(String.self, forKey: .measure5)
+        self.measure6 = try container.decodeIfPresent(String.self, forKey: .measure6)
+        self.measure7 = try container.decodeIfPresent(String.self, forKey: .measure7)
+        self.measure8 = try container.decodeIfPresent(String.self, forKey: .measure8)
+        self.measure9 = try container.decodeIfPresent(String.self, forKey: .measure9)
+        self.measure10 = try container.decodeIfPresent(String.self, forKey: .measure10)
+        self.measure11 = try container.decodeIfPresent(String.self, forKey: .measure11)
+        self.measure12 = try container.decodeIfPresent(String.self, forKey: .measure12)
+        self.measure13 = try container.decodeIfPresent(String.self, forKey: .measure13)
+        self.measure14 = try container.decodeIfPresent(String.self, forKey: .measure14)
+        self.measure15 = try container.decodeIfPresent(String.self, forKey: .measure15)
+        self.ingredients = [ingredient1 ?? "", ingredient2 ?? "", ingredient3 ?? "", ingredient4 ?? "", ingredient5 ?? "", ingredient6 ?? "", ingredient7 ?? "", ingredient8 ?? "", ingredient9 ?? "", ingredient10 ?? "", ingredient11 ?? "", ingredient12 ?? "", ingredient13 ?? "", ingredient14 ?? "", ingredient15 ?? ""]
+        self.ingredients = prepareArray(tempArray: ingredients)
+        self.measures = [measure1 ?? "", measure2 ?? "", measure3 ?? "", measure4 ?? "", measure5 ?? "", measure6 ?? "", measure7 ?? "", measure8 ?? "", measure9 ?? "", measure10 ?? "", measure11 ?? "", measure12 ?? "", measure13 ?? "", measure14 ?? "", measure15 ?? ""]
+        self.measures = prepareArray(tempArray: measures)
+    }
+    
+    
+    private func prepareArray(tempArray: [String]) -> [String] {
+        return tempArray.filter({ $0 != ""})
     }
 }
 

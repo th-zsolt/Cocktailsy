@@ -43,7 +43,8 @@ class NetworkManager {
     
     
     func getCocktailsByName(for cocktailName: String) async throws -> [CocktailBrief] {
-        let endpoint = baseURL + "search.php?s=\(cocktailName)"
+        let newCocktailName = cocktailName.replacingOccurrences(of: " ", with: "_")
+        let endpoint = baseURL + "search.php?s=\(newCocktailName)"
         
         guard let url = URL(string: endpoint) else {
             throw CYError.invalidCoctailName
@@ -58,7 +59,6 @@ class NetworkManager {
         do {
             let cocktailBriefResults = try decoder.decode(CocktailBriefResults.self, from: data)
             let cocktails = cocktailBriefResults.drinks
-            print(cocktails)
             return cocktails
             
         } catch {
@@ -85,7 +85,6 @@ class NetworkManager {
         do {
             let cocktailBriefResults = try decoder.decode(CocktailBriefResults.self, from: data)
             let cocktails = cocktailBriefResults.drinks
-            print(cocktails)
             return cocktails
             
         } catch {
@@ -110,7 +109,6 @@ class NetworkManager {
         do {
             let cocktailResult = try decoder.decode(CocktailResults.self, from: data)
             let cocktails = cocktailResult.drinks
-            print(cocktails)
             return cocktails
             
         } catch {

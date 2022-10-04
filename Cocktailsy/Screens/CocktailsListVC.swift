@@ -67,7 +67,7 @@ class CocktailsListVC: CYDataLoadingVC {
     func configureSearchController() {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search for a username"
+        searchController.searchBar.placeholder = "Search for a cocktail"
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
     }
@@ -170,6 +170,7 @@ extension CocktailsListVC: UICollectionViewDelegate {
         let navController = UINavigationController(rootViewController: destVC)
         present(navController, animated: true)
     }
+    
 }
 
 
