@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D9BEA4828E54DD000BD6E3A /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BEA4728E54DD000BD6E3A /* CategoryCell.swift */; };
-		0D9D92A128EBE18F00C95A64 /* CYCocktailInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D92A028EBE18F00C95A64 /* CYCocktailInfoHeaderVC.swift */; };
-		0D9D92A328EBE1BF00C95A64 /* CYIngredientListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D92A228EBE1BF00C95A64 /* CYIngredientListVC.swift */; };
+		0D9D94BE28EE129600BF17A0 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D94BD28EE129600BF17A0 /* IngredientCell.swift */; };
 		0D9E43B728E98E1B005F961B /* CocktailInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E43B628E98E1B005F961B /* CocktailInfoVC.swift */; };
 		0DA2F91128E18D7D0032FBD0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2F91028E18D7D0032FBD0 /* PersistenceManager.swift */; };
 		0DA2F91328E19A370032FBD0 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2F91228E19A370032FBD0 /* FavoriteCell.swift */; };
@@ -42,13 +41,13 @@
 		0DB11FA328DF680000B51F33 /* CYTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB11FA228DF680000B51F33 /* CYTitleLabel.swift */; };
 		0DB2C38828EA341200F28420 /* CocktailBrief.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2C38728EA341200F28420 /* CocktailBrief.swift */; };
 		0DB2C38A28EA39A900F28420 /* CocktailBriefCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2C38928EA39A900F28420 /* CocktailBriefCell.swift */; };
+		0DBDE1BE2A5F254400BB3613 /* CInfoHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE1BD2A5F254400BB3613 /* CInfoHeaderCollectionReusableView.swift */; };
 		0DCDECA128E36EEF00DC0BD3 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDECA028E36EEF00DC0BD3 /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D9BEA4728E54DD000BD6E3A /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		0D9D92A028EBE18F00C95A64 /* CYCocktailInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYCocktailInfoHeaderVC.swift; sourceTree = "<group>"; };
-		0D9D92A228EBE1BF00C95A64 /* CYIngredientListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYIngredientListVC.swift; sourceTree = "<group>"; };
+		0D9D94BD28EE129600BF17A0 /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		0D9E43B628E98E1B005F961B /* CocktailInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailInfoVC.swift; sourceTree = "<group>"; };
 		0DA2F91028E18D7D0032FBD0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		0DA2F91228E19A370032FBD0 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		0DB11FA228DF680000B51F33 /* CYTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYTitleLabel.swift; sourceTree = "<group>"; };
 		0DB2C38728EA341200F28420 /* CocktailBrief.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailBrief.swift; sourceTree = "<group>"; };
 		0DB2C38928EA39A900F28420 /* CocktailBriefCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailBriefCell.swift; sourceTree = "<group>"; };
+		0DBDE1BD2A5F254400BB3613 /* CInfoHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CInfoHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		0DCDECA028E36EEF00DC0BD3 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +103,7 @@
 				0DA2F91228E19A370032FBD0 /* FavoriteCell.swift */,
 				0D9BEA4728E54DD000BD6E3A /* CategoryCell.swift */,
 				0DB2C38928EA39A900F28420 /* CocktailBriefCell.swift */,
+				0D9D94BD28EE129600BF17A0 /* IngredientCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -193,6 +194,7 @@
 			children = (
 				0DB11F8828DF664B00B51F33 /* CYEmptyStateView.swift */,
 				0DB11F8A28DF666000B51F33 /* CYAlertContainerView.swift */,
+				0DBDE1BD2A5F254400BB3613 /* CInfoHeaderCollectionReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,8 +231,6 @@
 			children = (
 				0DB11F8D28DF668B00B51F33 /* CYAlertVC.swift */,
 				0DB11F8F28DF66B100B51F33 /* CYDataLoadingVC.swift */,
-				0D9D92A028EBE18F00C95A64 /* CYCocktailInfoHeaderVC.swift */,
-				0D9D92A228EBE1BF00C95A64 /* CYIngredientListVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -352,7 +352,9 @@
 				0DB11F7328DF647900B51F33 /* CYError.swift in Sources */,
 				0D9BEA4828E54DD000BD6E3A /* CategoryCell.swift in Sources */,
 				0DB11F8128DF65C000B51F33 /* SearchVC.swift in Sources */,
+				0DBDE1BE2A5F254400BB3613 /* CInfoHeaderCollectionReusableView.swift in Sources */,
 				0DB11F8928DF664B00B51F33 /* CYEmptyStateView.swift in Sources */,
+				0D9D94BE28EE129600BF17A0 /* IngredientCell.swift in Sources */,
 				0DB11FA328DF680000B51F33 /* CYTitleLabel.swift in Sources */,
 				0DB2C38A28EA39A900F28420 /* CocktailBriefCell.swift in Sources */,
 				0DB11F9328DF66E100B51F33 /* CYImageView.swift in Sources */,
@@ -374,9 +376,7 @@
 				0DCDECA128E36EEF00DC0BD3 /* UIHelper.swift in Sources */,
 				0DB11F5628DF629A00B51F33 /* SceneDelegate.swift in Sources */,
 				0DB11F9D28DF677B00B51F33 /* CYTabBarController.swift in Sources */,
-				0D9D92A128EBE18F00C95A64 /* CYCocktailInfoHeaderVC.swift in Sources */,
 				0DB11F9628DF671200B51F33 /* CYTextField.swift in Sources */,
-				0D9D92A328EBE1BF00C95A64 /* CYIngredientListVC.swift in Sources */,
 				0DB11F6A28DF63F400B51F33 /* UIView+Ext.swift in Sources */,
 				0DB11F7128DF645900B51F33 /* Constants.swift in Sources */,
 				0D9E43B728E98E1B005F961B /* CocktailInfoVC.swift in Sources */,

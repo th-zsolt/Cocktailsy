@@ -12,25 +12,20 @@ protocol CocktailInfoVCDelegate: AnyObject {
 }
 
 
-class CocktailInfoVC: CYDataLoadingVC {
+class CocktailInfoVC: CYDataLoadingVC, UICollectionViewDelegateFlowLayout {
 
-    let scrollView = UIScrollView()
-    let contentView = UIView()
-    let headerView = UIView()
-//    let horizontalScrollView = UIScrollView()
-    let instructionsView = CYBodyLabel(textAlignment: .left)
-    let ingredientView = UIView()
-    var itemViews: [UIView ] = []
-    
+   
+    var cocktail: Cocktail?
     var cocktailId : String!
+    
+    var collectionView: UICollectionView!
     weak var delegate: CocktailInfoVCDelegate!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
-        configureScrollView()
-        layoutUI()
+        configureCollectionView()
         getCocktailById()
     }
     
@@ -38,23 +33,12 @@ class CocktailInfoVC: CYDataLoadingVC {
     func configureViewController() {
         view.backgroundColor = .systemBackground
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
-        navigationItem.rightBarButtonItem = doneButton
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        navigationItem.leftBarButtonItem = addButton
-    }
-    
-    
-    func configureScrollView() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        scrollView.pinToEdges(of: view)
-        contentView.pinToEdges(of: scrollView)
         
-        NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: 600)    
-        ])
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        
+        navigationItem.rightBarButtonItems = [doneButton, addButton]
     }
+
     
     
     func getCocktailById() {
@@ -62,8 +46,7 @@ class CocktailInfoVC: CYDataLoadingVC {
             do {
                 let cocktails = try await NetworkManager.shared.getCocktailById(for: cocktailId)
                 let cocktail = cocktails[0]
-//                print(cocktail)
-                configureUIElements(with: cocktail)
+                updateUI(with: cocktail)
             } catch {
                 if let cyError = error as? CYError {
                     presentCYAlert(title: "Something went wrong", message: cyError.rawValue, buttonTitle: "Ok")
@@ -75,55 +58,51 @@ class CocktailInfoVC: CYDataLoadingVC {
     }
     
     
-    func configureUIElements(with cocktail: Cocktail) {
-        self.add(childVC: CYCocktailInfoHeaderVC(cocktail: cocktail), to: self.headerView)
-//        self.add(childVC: CYIngredientListVC(cocktail: cocktail), to: self.ingredientView)
-    }
-    
-    
-    func layoutUI() {
-        let padding: CGFloat = 20
-        let itemHeight: CGFloat = 140
-
-        itemViews = [headerView]
-        
-//
-////        itemViews = [headerView, instructionsView, ingredientView]
-//
-        for itemView in itemViews {
-            contentView.addSubview(itemView)
-            itemView.translatesAutoresizingMaskIntoConstraints = false
-
-            NSLayoutConstraint.activate([
-                itemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-                itemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            ])
+    func updateUI(with cocktail: Cocktail) {
+            self.cocktail = cocktail
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.view.bringSubviewToFront(self.collectionView)
+                
+            }
         }
-//
-        NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 210),
+    
+    
+    func configureCollectionView() {
+      
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .systemBackground
+        view.addSubview(collectionView!)
+        collectionView.register(IngredientCell.self, forCellWithReuseIdentifier: IngredientCell.reuseID)
+        collectionView.register(CInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CInfoHeaderCollectionReusableView.identifier)
 
-//            instructionsView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
-//            instructionsView.heightAnchor.constraint(equalToConstant: itemHeight),
-
-
-//            ingredientView.topAnchor.constraint(equalTo: instructionsView.bottomAnchor, constant: padding),
-//            ingredientView.heightAnchor.constraint(equalToConstant: 50)
-        ])
     }
-    
-    
-    func add(childVC: UIViewController, to containerView: UIView) {
-        addChild(childVC)
-        containerView.addSubview(childVC.view)
-        childVC.view.frame = containerView.bounds
-        childVC.didMove(toParent: self)
-    }
-    
+
     
     @objc func addButtonTapped() {
-//    let favorite = Cocktail(id: <#T##String#>, drinkName: <#T##String#>, category: <#T##String#>, alcoholic: <#T##String#>, glass: <#T##String#>, instructions: <#T##String#>, avatarUrl: <#T##String#>, ingredient1: <#T##String?#>, ingredient2: <#T##String?#>, ingredient3: <#T##String?#>, ingredient4: <#T##String?#>, ingredient5: <#T##String?#>, ingredient6: <#T##String?#>, ingredient7: <#T##String?#>, ingredient8: <#T##String?#>, ingredient9: <#T##String?#>, ingredient10: <#T##String?#>, ingredient11: <#T##String?#>, ingredient12: <#T##String?#>, ingredient13: <#T##String?#>, ingredient14: <#T##String?#>, ingredient15: <#T##String?#>, measure1: <#T##String?#>, measure2: <#T##String?#>, measure3: <#T##String?#>, measure4: <#T##String?#>, measure5: <#T##String?#>, measure6: <#T##String?#>, measure7: <#T##String?#>, measure8: <#T##String?#>, measure9: <#T##String?#>, measure10: <#T##String?#>, measure11: <#T##String?#>, measure12: <#T##String?#>, measure13: <#T##String?#>, measure14: <#T##String?#>, measure15: <#T##String?#>)
+        if self.cocktail != nil {
+            let favorite = CocktailBrief(id: self.cocktail!.id, drinkName: self.cocktail!.drinkName, avatarUrl: self.cocktail!.avatarUrl)
+            
+            PersistenceManager.updateWith(favorite: favorite, actionType: .add) {
+                [weak self] error in
+                guard let self = self else { return }
+                
+                guard let error = error else {
+                    DispatchQueue.main.async {
+                        self.presentCYAlert(title: "Success!", message: "You have successfully favorited this drink.", buttonTitle: "Ok")
+                    }
+                    
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.presentCYAlert(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+                }
+            }
+        }
     }
 
     
@@ -132,4 +111,42 @@ class CocktailInfoVC: CYDataLoadingVC {
     }
 }
 
+
+extension CocktailInfoVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        cocktail?.ingredients.count ?? 0
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if cocktail != nil {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientCell.reuseID, for: indexPath) as! IngredientCell
+            let ingredient = cocktail!.ingredients[indexPath.row]
+            let measure = indexPath.row > cocktail!.measures.count-1 ? "" :
+            cocktail!.measures[indexPath.row]
+            cell.set(ingredient: ingredient, measure: measure)
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CInfoHeaderCollectionReusableView.identifier, for: indexPath) as! CInfoHeaderCollectionReusableView
+        header.configure()
+        
+        if self.cocktail != nil {
+            header.set(cocktail: self.cocktail!)
+        }
+    
+        return header
+    }
+
+
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            return CGSize(width: view.frame.size.width, height: 260)
+        }
+    
+}
 

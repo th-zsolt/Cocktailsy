@@ -92,10 +92,15 @@ extension FavoritesListVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite = favorites[indexPath.row]
-        let destVC = CocktailsListVC(cocktailName: favorite.drinkName)
-        
-        navigationController?.pushViewController(destVC, animated: true)
+        let destVC = CocktailInfoVC()
+        destVC.cocktailId = favorite.id
+        destVC.delegate = self
+        let navController = UINavigationController(rootViewController: destVC)
+        present(navController, animated: true)
     }
+    
+
+    
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -113,5 +118,11 @@ extension FavoritesListVC: UITableViewDataSource, UITableViewDelegate {
                 self.presentCYAlert(title: "Unable to remove", message: error.rawValue, buttonTitle: "ok")
             }
         }
+    }
+}
+
+extension FavoritesListVC: CocktailInfoVCDelegate {
+    
+    func didRequestCocktails(for cocktailName: String) {
     }
 }
